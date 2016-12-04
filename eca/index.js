@@ -35,6 +35,7 @@ class elementaryCellularAutomata {
 
     if (margin % 1 != 0) {
       this.rows[0] += '0'
+      margin = Math.floor(margin)
     }
     for (let i = 0; i < margin; i++) {
       this.rows[0] += '0'
