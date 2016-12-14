@@ -1,5 +1,5 @@
-# elementary Cellular Automata
-A generator in javascript for elementary Cellular Automata in short eca. Made by Mund & Mart for their PWS.
+# Elementary Cellular Automata
+A generator in javascript for Elementary Cellular Automata in short eca. Made by Mund & Mart for their PWS.
 
 ## How to use
 `elementaryCellularAutomata(rule, options)` has one required parameter the rule number,
@@ -16,6 +16,6 @@ let eca = new elementaryCellularAutomata(30)
 eca.genLine()
 eca.genLine()
 eca.genLine()
-console.log(eca.rows)
-//returns [ '00000100000', '00001110000', '00011001000', '00110111100' ]
+eca.rows
+// => [ '00000100000', '00001110000', '00011001000', '00110111100' ]
 ```
