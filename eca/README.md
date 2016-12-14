@@ -12,6 +12,8 @@ saved in an array in the `.rows` property.
 
 example:
 ``` javascript
+const eca = require('eca')
+
 let thirty = new eca(30)
 thirty.genLine()
 thirty.genLine()
