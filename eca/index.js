@@ -73,11 +73,3 @@ class elementaryCellularAutomata {
     this.newRow = ''
   }
 }
-
-//example use
-let eca = new elementaryCellularAutomata(30)
-eca.genLine()
-eca.genLine()
-eca.genLine()
-console.log(eca.rows)
-//returns [ '00000100000', '00001110000', '00011001000', '00110111100' ]
