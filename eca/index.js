@@ -2,7 +2,9 @@
   Made by Mund & Mart for PWS to show a possible js implementation of
   ellementary cellular automata
 */
-class elementaryCellularAutomata {
+'use strict'
+
+class eca {
   constructor(number, options = {}) {
     this.leftPad = require('left-pad')
 
@@ -73,3 +75,5 @@ class elementaryCellularAutomata {
     this.newRow = ''
   }
 }
+
+module.exports = eca
