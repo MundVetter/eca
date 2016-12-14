@@ -12,7 +12,7 @@ saved in an array in the `.rows` property.
 
 example:
 ``` javascript
-let thirty = new elementaryCellularAutomata(30)
+let thirty = new eca(30)
 thirty.genLine()
 thirty.genLine()
 thirty.genLine()
