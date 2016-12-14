@@ -3,11 +3,11 @@
   ellementary cellular automata
 */
 class elementaryCellularAutomata {
-  constructor(number, seed = '1', MAX_WIDTH = 11) {
+  constructor(number, options = {}) {
     this.leftPad = require('left-pad')
 
-    this.seed = seed
-    this.MAX_WIDTH = MAX_WIDTH
+    this.seed = options.seed  || '1'
+    this.width = options.width || 11
 
     this.PATTERNS = [
       '111',
@@ -31,7 +31,7 @@ class elementaryCellularAutomata {
   //Generates the initial row from a seed
   initialRow() {
     this.rows.push(this.seed)
-    let margin = (this.MAX_WIDTH - this.seed.length) / 2
+    let margin = (this.width - this.seed.length) / 2
 
     if (margin % 1 != 0) {
       this.rows[0] += '0'
