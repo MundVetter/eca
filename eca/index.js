@@ -30,7 +30,7 @@ class eca {
     this._initialLattice()
   }
   _rule(number) {
-    if(number < 0 || number > 256)
+    if(number < 0 || number > 255)
       throw new Error(number + ' is not a rule!')
     return this.leftPad(number.toString(2), 8, 0)
   }
