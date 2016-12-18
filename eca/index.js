@@ -51,7 +51,7 @@ class eca {
     }
   }
   // generates a new line and pushes the line into the lattices
-  genlattice() {
+  genLattice() {
     const CURR_LATTICE = this.lattices[this.lattices.length - 1]
     for (let i = 0; i < CURR_LATTICE.length; i++) {
       let a = i - 1
