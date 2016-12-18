@@ -2,7 +2,7 @@ const eca = require('./');
 const test = require('tape');
 
 test('eca', (assert)=> {
-  assert.plan(3)
+  assert.plan(4)
   let thirty = new eca(30)
   thirty.genlattice()
   thirty.genlattice()
@@ -14,4 +14,21 @@ test('eca', (assert)=> {
   even.genlattice()
   assert.equal(even.lattices[2].length, 4)
   assert.equal(even.lattices[0], '0100')
+
+  assert.throws(() => new eca(30, {width: 3, seed: '1111'}))
+
+})
+test('getNeighborhood', (assert)=> {
+  assert.plan(3)
+  let env = new eca(1)
+  assert.equal(env._getNeighborhood('abcdef', -1, 2), 'fab')
+  assert.equal(env._getNeighborhood('abcdef', 4, 7), 'efa')
+  assert.equal(env._getNeighborhood('abcdef', 2, 5), 'cde')
+})
+
+test('rule', (assert)=> {
+  assert.plan(2)
+  let env = new eca(1)
+  assert.equal(env.RESULTS, '00000001')
+  assert.throws(() => env._rule(-1))
 })

@@ -1,6 +1,6 @@
 {
   "name": "eca",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "Made for PWS by Mund & Mart to demonstarte elementary cellular automata",
   "main": "index.js",
   "dependencies": {

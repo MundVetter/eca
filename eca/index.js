@@ -10,7 +10,9 @@ class eca {
 
     this.seed = options.seed  || '1'
     this.width = options.width || 11
-
+    if (this.seed.length > this.width) {
+      throw new Error('The lenght of the seed is bigger than the width of the eca')
+    }
     this.PATTERNS = [
       '111',
       '110',
@@ -21,17 +23,19 @@ class eca {
       '001',
       '000'
     ]
-    this.RESULTS = this.rule(number)
+    this.RESULTS = this._rule(number)
 
     this.lattices = []
-    this.newRow = ''
-    this.initialRow()
+    this.newLattice = ''
+    this._initialLattice()
   }
-  rule(number) {
+  _rule(number) {
+    if(number < 0 || number > 256)
+      throw new Error(number + ' is not a rule!')
     return this.leftPad(number.toString(2), 8, 0)
   }
   //Generates the initial lattice from a seed
-  initialRow() {
+  _initialLattice() {
     this.lattices.push(this.seed)
     let margin = (this.width - this.seed.length) / 2
 
@@ -53,26 +57,31 @@ class eca {
       let a = i - 1
       let b = i + 2
 
-      let slice = CURR_LATTICE.slice(a, b)
-      // on the edge get the cell of the other side
-      if(a < 0) {
-        let begin = CURR_LATTICE.slice(a)
-        let end = CURR_LATTICE.slice(0, b)
-        slice = begin + end
-      } else if(b > CURR_LATTICE.length) {
-        let begin  = CURR_LATTICE.slice(a)
-        let end = CURR_LATTICE.slice(0, b - CURR_LATTICE.length)
-        slice = begin + end
-      }
+      const neighborhood = this._getNeighborhood(CURR_LATTICE, a, b)
+
       for (let i = 0; i < this.PATTERNS.length; i++) {
-        if (slice == this.PATTERNS[i]) {
-          this.newRow += this.RESULTS.charAt(i)
+        if (neighborhood == this.PATTERNS[i]) {
+          this.newLattice += this.RESULTS.charAt(i)
           break
         }
       }
     }
-    this.lattices.push(this.newRow)
-    this.newRow = ''
+    this.lattices.push(this.newLattice)
+    this.newLattice = ''
+  }
+  _getNeighborhood(lattice, a, b) {
+    let neighborhood = lattice.slice(a, b)
+    // on the edge get the cell of the other side
+    if(a < 0) {
+      let begin = lattice.slice(a)
+      let end = lattice.slice(0, b)
+      neighborhood = begin + end
+    } else if(b > lattice.length) {
+      let begin  = lattice.slice(a)
+      let end = lattice.slice(0, b - lattice.length)
+      neighborhood = begin + end
+    }
+    return neighborhood
   }
 }
 
