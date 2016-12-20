@@ -26,7 +26,7 @@ class eca {
     this.RESULTS = this._rule(number)
 
     this.lattices = []
-    this.newLattice = ''
+    this._newLattice = ''
     this._initialLattice()
   }
   _rule(number) {
@@ -61,13 +61,13 @@ class eca {
 
       for (let i = 0; i < this.PATTERNS.length; i++) {
         if (neighborhood == this.PATTERNS[i]) {
-          this.newLattice += this.RESULTS.charAt(i)
+          this._newLattice += this.RESULTS.charAt(i)
           break
         }
       }
     }
-    this.lattices.push(this.newLattice)
-    this.newLattice = ''
+    this.lattices.push(this._newLattice)
+    this._newLattice = ''
   }
   _getNeighborhood(lattice, a, b) {
     let neighborhood = lattice.slice(a, b)
