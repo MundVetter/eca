@@ -4,10 +4,10 @@
 */
 'use strict'
 
+const leftPad = require('left-pad')
+
 class eca {
   constructor(number, options = {}) {
-    this.leftPad = require('left-pad')
-
     this.seed = options.seed  || '1'
     this.width = options.width || 11
     if (this.seed.length > this.width) {
@@ -32,7 +32,7 @@ class eca {
   _rule(number) {
     if(number < 0 || number > 255)
       throw new Error(number + ' is not a rule!')
-    return this.leftPad(number.toString(2), 8, 0)
+    return leftPad(number.toString(2), 8, 0)
   }
   //Generates the initial lattice from a seed
   _initialLattice() {
