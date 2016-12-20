@@ -7,7 +7,7 @@ the second parameter is optional. The second parameter is an object. That object
 can contain a `seed`. The `seed` is a binary string. The `seed` defaults to `'1'`.
 You can also determine the `width` of the eca. The `width` property defaults to
 `11`.
-With the `.genLattice()` method you generate a new lattice. The generated lattices
+The `.genLattice()` method generates a new lattice and that lattice. The generated lattices
 and the original seed are saved in the `.lattices` property.
 
 example:
@@ -15,9 +15,9 @@ example:
 const eca = require('eca')
 
 let thirty = new eca(30)
-thirty.genLattice()
-thirty.genLattice()
-thirty.genLattice()
+thirty.genLattice() // => 00001110000
+thirty.genLattice() // => 00011001000
+thirty.genLattice() // => 00110111100
 thirty.lattices
 // => [ '00000100000', '00001110000', '00011001000', '00110111100' ]
 ```

@@ -11,7 +11,7 @@ class eca {
     this.seed = options.seed  || '1'
     this.width = options.width || 11
     if (this.seed.length > this.width) {
-      throw new Error('The lenght of the seed is bigger than the width of the eca')
+      throw new Error('The lenght of the seed is bigger than the width of the eca.')
     }
     this.PATTERNS = [
       '111',
@@ -68,6 +68,7 @@ class eca {
     }
     this.lattices.push(this._newLattice)
     this._newLattice = ''
+    return this.lattices[this.lattices.length - 1]
   }
   _getNeighborhood(lattice, a, b) {
     let neighborhood = lattice.slice(a, b)
