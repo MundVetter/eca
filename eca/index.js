@@ -56,9 +56,7 @@ class eca {
     for (let i = 0; i < CURR_LATTICE.length; i++) {
       let a = i - 1
       let b = i + 2
-
       const neighborhood = this._getNeighborhood(CURR_LATTICE, a, b)
-
       for (let i = 0; i < this.PATTERNS.length; i++) {
         if (neighborhood == this.PATTERNS[i]) {
           this._newLattice += this.RESULTS.charAt(i)

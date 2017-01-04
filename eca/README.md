@@ -7,8 +7,8 @@ the second parameter is optional. The second parameter is an object. That object
 can contain a `seed`. The `seed` is a binary string. The `seed` defaults to `'1'`.
 You can also determine the `width` of the eca. The `width` property defaults to
 `11`.
-The `.genLattice()` method generates a new lattice and that lattice. The generated lattices
-and the original seed are saved in the `.lattices` property.
+The `.genLattice()` method generates a new lattice and returns that lattice. The lattices
+are saved in the `.lattices` property.
 
 example:
 ``` javascript
