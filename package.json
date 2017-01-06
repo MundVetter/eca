@@ -1,6 +1,6 @@
 {
   "name": "eca",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "description": "Made for PWS by Mund & Mart to demonstarte elementary cellular automata",
   "main": "index.js",
   "dependencies": {
@@ -16,8 +16,12 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/MundVetter/cellular-automata/tree/master/eca"
+    "url": "git+https://github.com/MundVetter/eca.git"
   },
+  "bugs": {
+    "url": "https://github.com/MundVetter/eca/issues"
+  },
+  "homepage": "https://github.com/MundVetter/toBase#readme",
   "keywords": [
     "ellementary",
     "cellular",
