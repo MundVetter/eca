@@ -50,6 +50,7 @@ class eca {
     const CURR_LATTICE = this.lattices[this.lattices.length - 1]
     for (let i = 0; i < CURR_LATTICE.length; i++) {
       const a = i - this.neighbors / 2
+      const b = i + 1 + this.neighbors / 2
       const neighborhood = this._getNeighborhood(CURR_LATTICE, a, b)
       const index = this.results.length - (parseInt(neighborhood, this.states) + 1)
       this._newLattice += this.results.charAt(index)
