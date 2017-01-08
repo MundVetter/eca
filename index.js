@@ -17,7 +17,6 @@ class eca {
       throw new Error('The lenght of the seed is bigger than the width of the eca.')
     this.results = this._rule(number)
     this.lattices = []
-    this._newLattice = ''
     this._initialLattice()
   }
   _rule(number) {
@@ -41,20 +40,20 @@ class eca {
     }
   }
   genLattice() {
+    let newLattice = ''
     const lattice = this.lattices[this.lattices.length - 1]
     for (let i = 0; i < lattice.length; i++) {
       const a = i - this.neighbors / 2
       const b = i + 1 + this.neighbors / 2
       const neighborhood = this._getNeighborhood(lattice, a, b)
       const index = this.results.length - (parseInt(neighborhood, this.states) + 1)
-      this._newLattice += this.results.charAt(index)
+      newLattice += this.results.charAt(index)
     }
-    this.lattices.push(this._newLattice)
-    this._newLattice = ''
-    return this.lattices[this.lattices.length - 1]
+    this.lattices.push(newLattice)
+    return newLattice
   }
   _getNeighborhood(lattice, a, b) {
-    let neighborhood = lattice.slice(a, b)
+    let neighborhood
     // on the edge get the cell of the other side
     if(a < 0) {
       let begin = lattice.slice(a)
@@ -64,6 +63,8 @@ class eca {
       let begin  = lattice.slice(a)
       let end = lattice.slice(0, b - lattice.length)
       neighborhood = begin + end
+    } else {
+      neighborhood = lattice.slice(a, b)
     }
     return neighborhood
   }
