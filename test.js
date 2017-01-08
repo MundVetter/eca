@@ -7,7 +7,8 @@ test('eca', (assert)=> {
   thirty.genLattice()
   thirty.genLattice()
   thirty.genLattice()
-  assert.deepEqual(thirty.lattices, ['00000100000', '00001110000', '00011001000', '00110111100'])
+  assert.deepEqual(thirty.lattices, ['00000100000', '00001110000', 
+  '00011001000', '00110111100'])
 
   let even = new eca(30, {width: 4})
   even.genLattice()

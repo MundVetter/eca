@@ -5,7 +5,6 @@
 'use strict'
 
 const leftPad = require('left-pad')
-
 class eca {
   constructor(number, options = {}) {
     this.seed = options.seed  || '1'
@@ -13,19 +12,18 @@ class eca {
     this.neighbors = options.neighbors || 2
     this.states = options.states || 2
     this.patterns = Math.pow(this.states, this.neighbors + 1)
-    
-    if (this.seed.length > this.width) {
+
+    if (this.seed.length > this.width)
       throw new Error('The lenght of the seed is bigger than the width of the eca.')
-    }
     this.results = this._rule(number)
     this.lattices = []
     this._newLattice = ''
     this._initialLattice()
   }
   _rule(number) {
-    const MAX_STATE = Math.pow(this.states, this.patterns) - 1;
-    if(number < 0 || number > MAX_STATE)
-      throw new Error(`${number} + is not a rule! Max state is: ${MAX_STATE}`)
+    const max = Math.pow(this.states, this.patterns) - 1;
+    if(number < 0 || number > max)
+      throw new Error(`${number} + is not a rule! Max state is: ${max}.`)
     return leftPad(number.toString(this.states), this.patterns, 0)
   }
   //Generates the initial lattice from a seed
@@ -39,18 +37,15 @@ class eca {
     }
     for (let i = 0; i < margin; i++) {
       this.lattices[0] += '0'
-    }
-    for (let i = 0; i < margin; i++) {
       this.lattices[0] = '0' + this.lattices[0]
     }
   }
-  // generates a new line and pushes the line into the lattices
   genLattice() {
-    const CURR_LATTICE = this.lattices[this.lattices.length - 1]
-    for (let i = 0; i < CURR_LATTICE.length; i++) {
+    const lattice = this.lattices[this.lattices.length - 1]
+    for (let i = 0; i < lattice.length; i++) {
       const a = i - this.neighbors / 2
       const b = i + 1 + this.neighbors / 2
-      const neighborhood = this._getNeighborhood(CURR_LATTICE, a, b)
+      const neighborhood = this._getNeighborhood(lattice, a, b)
       const index = this.results.length - (parseInt(neighborhood, this.states) + 1)
       this._newLattice += this.results.charAt(index)
     }
