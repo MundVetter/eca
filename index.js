@@ -10,29 +10,24 @@ class eca {
   constructor(number, options = {}) {
     this.seed = options.seed  || '1'
     this.width = options.width || 11
+    this.neighbors = options.neighbors || 2
+    this.states = options.states || 2
+    this.patterns = Math.pow(this.states, this.neighbors + 1)
+
     if (this.seed.length > this.width) {
       throw new Error('The lenght of the seed is bigger than the width of the eca.')
     }
-    this.PATTERNS = [
-      '111',
-      '110',
-      '101',
-      '100',
-      '011',
-      '010',
-      '001',
-      '000'
-    ]
-    this.RESULTS = this._rule(number)
+    this.results = this._rule(number)
 
     this.lattices = []
     this._newLattice = ''
     this._initialLattice()
   }
   _rule(number) {
-    if(number <= 0 || number >= 255)
-      throw new Error(number + ' is not a rule!')
-    return leftPad(number.toString(2), 8, 0)
+    const MAX_STATE = Math.pow(this.states, this.patterns) - 1;
+    if(number < 0 || number > MAX_STATE)
+      throw new Error(`${number} + is not a rule! Max state is: ${MAX_STATE}`)
+    return leftPad(number.toString(this.states), this.patterns, 0)
   }
   //Generates the initial lattice from a seed
   _initialLattice() {
@@ -54,15 +49,10 @@ class eca {
   genLattice() {
     const CURR_LATTICE = this.lattices[this.lattices.length - 1]
     for (let i = 0; i < CURR_LATTICE.length; i++) {
-      let a = i - 1
-      let b = i + 2
+      const a = i - this.neighbors / 2
       const neighborhood = this._getNeighborhood(CURR_LATTICE, a, b)
-      for (let i = 0; i < this.PATTERNS.length; i++) {
-        if (neighborhood == this.PATTERNS[i]) {
-          this._newLattice += this.RESULTS.charAt(i)
-          break
-        }
-      }
+      const index = this.results.length - (parseInt(neighborhood, this.states) + 1)
+      this._newLattice += this.results.charAt(index)
     }
     this.lattices.push(this._newLattice)
     this._newLattice = ''

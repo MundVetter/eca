@@ -18,17 +18,16 @@ test('eca', (assert)=> {
   assert.throws(() => new eca(30, {width: 3, seed: '1111'}))
 
 })
-test('getNeighborhood', (assert)=> {
+test('getNeighborhood', (assert) => {
   assert.plan(3)
   let env = new eca(1)
   assert.equal(env._getNeighborhood('abcdef', -1, 2), 'fab')
   assert.equal(env._getNeighborhood('abcdef', 4, 7), 'efa')
   assert.equal(env._getNeighborhood('abcdef', 2, 5), 'cde')
 })
-
 test('rule', (assert)=> {
   assert.plan(2)
   let env = new eca(1)
-  assert.equal(env.RESULTS, '00000001')
+  assert.equal(env.results, '00000001')
   assert.throws(() => env._rule(-1))
 })
