@@ -20,7 +20,7 @@ class eca {
     this._initialLattice()
   }
   _rule(number) {
-    const max = Math.pow(this.states, this.patterns) - 1;
+    const max = Math.pow(this.states, this.patterns) - 1
     if(number < 0 || number > max)
       throw new Error(`${number} + is not a rule! Max state is: ${max}.`)
     return leftPad(number.toString(this.states), this.patterns, 0)
