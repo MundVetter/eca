@@ -53,20 +53,14 @@ class eca {
     return newLattice
   }
   _getNeighborhood(lattice, a, b) {
-    let neighborhood
     // on the edge get the cell of the other side
     if(a < 0) {
-      let begin = lattice.slice(a)
-      let end = lattice.slice(0, b)
-      neighborhood = begin + end
+      return lattice.slice(a) + lattice.slice(0, b)
     } else if(b > lattice.length) {
-      let begin  = lattice.slice(a)
-      let end = lattice.slice(0, b - lattice.length)
-      neighborhood = begin + end
+      return lattice.slice(a) + lattice.slice(0, b - lattice.length)
     } else {
-      neighborhood = lattice.slice(a, b)
+      return lattice.slice(a, b)
     }
-    return neighborhood
   }
 }
 
