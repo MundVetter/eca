@@ -13,7 +13,7 @@ class eca {
     this.states = options.states || 2
     this.patterns = Math.pow(this.states, this.neighbors + 1)
 
-    if (this.seed.length > this.width)
+    if(this.seed.length > this.width)
       throw new Error('The lenght of the seed is bigger than the width of the eca.')
     this.results = this._rule(number)
     this.lattices = []
@@ -30,11 +30,11 @@ class eca {
     this.lattices.push(this.seed)
     let margin = (this.width - this.seed.length) / 2
 
-    if (margin % 1 != 0) {
+    if(margin % 1 != 0) {
       this.lattices[0] += '0'
       margin = Math.floor(margin)
     }
-    for (let i = 0; i < margin; i++) {
+    for(let i = 0; i < margin; i++) {
       this.lattices[0] += '0'
       this.lattices[0] = '0' + this.lattices[0]
     }
@@ -42,7 +42,7 @@ class eca {
   genLattice() {
     let newLattice = ''
     const lattice = this.lattices[this.lattices.length - 1]
-    for (let i = 0; i < lattice.length; i++) {
+    for(let i = 0; i < lattice.length; i++) {
       const a = i - this.neighbors / 2
       const b = i + 1 + this.neighbors / 2
       const neighborhood = this._getNeighborhood(lattice, a, b)
