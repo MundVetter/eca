@@ -1,3 +1,4 @@
+'use strict'
 const eca = require('./')
 const test = require('tape')
 
@@ -17,7 +18,6 @@ test('eca', (assert) => {
   assert.equal(even.lattices[0], '0100')
 
   assert.throws(() => new eca(30, {width: 3, seed: '1111'}))
-
 })
 test('getNeighborhood', (assert) => {
   assert.plan(3)
