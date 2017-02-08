@@ -12,7 +12,7 @@ class eca {
     this.neighbors = options.neighbors || 2
     this.states = options.states || 2
     this.patterns = Math.pow(this.states, this.neighbors + 1)
-
+    
     if(this.seed.length > this.width)
       throw new Error('The lenght of the seed is bigger than the width of the eca.')
     this.results = this._rule(number)
@@ -29,7 +29,6 @@ class eca {
   _initialLattice() {
     this.lattices.push(this.seed)
     let margin = (this.width - this.seed.length) / 2
-
     if(margin % 1 != 0) {
       this.lattices[0] += '0'
       margin = Math.floor(margin)
