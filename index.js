@@ -63,5 +63,4 @@ class eca {
     }
   }
 }
-
 module.exports = eca
