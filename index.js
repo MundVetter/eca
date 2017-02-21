@@ -1,6 +1,6 @@
 /*
-  Made by Mund & Mart for PWS to show a possible js implementation of
-  ellementary cellular automata
+  Made by Mund & Mart for their 'profielwerkstuk' to show a possible js implementation of
+  ellementary cellular automata.
 */
 'use strict'
 
