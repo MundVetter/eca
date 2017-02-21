@@ -1,5 +1,5 @@
 # Elementary Cellular Automata
-A generator in javascript for an Elementary Cellular Automata in short eca. Made by Mund & Mart for their 'profielwerkstuk'.
+A generator written in Javascript for Elementary Cellular Automata. We call it eca. Made by Mund & Mart for their 'profielwerkstuk'.
 
 ## How to use
 `eca(rule, options)` has one required parameter(the rule number),
