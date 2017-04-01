@@ -1,14 +1,12 @@
 /*
-  Made by Mund & Mart for PWS to show a possible js implementation of
-  ellementary cellular automata
+  Made by Mund & Mart for their 'profielwerkstuk' to show a possible js implementation of
+  ellementary cellular automata.
 */
 'use strict'
 
 const leftPad = require('left-pad')
 class Eca {
   constructor(number, options = {}) {
-    this.seed = options.seed  || '1'
-    this.width = options.width || 11
     this.neighbors = options.neighbors || 2
     this.states = options.states || 2
     this.patterns = Math.pow(this.states, this.neighbors + 1)
@@ -17,18 +15,20 @@ class Eca {
       throw new Error('The lenght of the seed is bigger than the width of the eca.')
     this.results = this._rule(number)
     this.lattices = []
-    this._initialLattice()
+    this._initialLattice(options.seed, options.width)
   }
   _rule(number) {
     const max = Math.pow(this.states, this.patterns) - 1
     if(number < 0 || number > max)
-      throw new Error(`${number} + is not a rule! Max state is: ${max}.`)
+      throw new Error(`${number} is not a rule! Max state is: ${max}.`)
     return leftPad(number.toString(this.states), this.patterns, 0)
   }
   //Generates the initial lattice from a seed
-  _initialLattice() {
-    this.lattices.push(this.seed)
-    let margin = (this.width - this.seed.length) / 2
+  _initialLattice(seed = '1', width = 11) {
+    if(seed.length > width)
+      throw new Error('The length of the seed is bigger than the width of the eca.')
+    this.lattices.push(seed)
+    let margin = (width - seed) / 2
     if(margin % 1 != 0) {
       this.lattices[0] += '0'
       margin = Math.floor(margin)
