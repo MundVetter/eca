@@ -14,7 +14,7 @@ example:
 ``` javascript
 const eca = require('eca')
 
-let thirty = new eca(30)
+let thirty = eca(30)
 thirty.genLattice() // => 00001110000
 thirty.genLattice() // => 00011001000
 thirty.genLattice() // => 00110111100

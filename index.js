@@ -5,14 +5,14 @@
 'use strict'
 
 const leftPad = require('left-pad')
-class eca {
+class Eca {
   constructor(number, options = {}) {
     this.seed = options.seed  || '1'
     this.width = options.width || 11
     this.neighbors = options.neighbors || 2
     this.states = options.states || 2
     this.patterns = Math.pow(this.states, this.neighbors + 1)
-    
+
     if(this.seed.length > this.width)
       throw new Error('The lenght of the seed is bigger than the width of the eca.')
     this.results = this._rule(number)
@@ -61,5 +61,8 @@ class eca {
       return lattice.slice(a, b)
     }
   }
+}
+function eca(number, options = {}) {
+  return new Eca(number, options)
 }
 module.exports = eca
