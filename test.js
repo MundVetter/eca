@@ -19,13 +19,6 @@ test('eca', (assert) => {
 
   assert.throws(() => eca(30, {width: 3, seed: '1111'}))
 })
-test('getNeighborhood', (assert) => {
-  assert.plan(3)
-  let env = eca(1)
-  assert.equal(env._getNeighborhood('abcdef', -1, 2), 'fab')
-  assert.equal(env._getNeighborhood('abcdef', 4, 7), 'efa')
-  assert.equal(env._getNeighborhood('abcdef', 2, 5), 'cde')
-})
 test('rule', (assert) => {
   assert.plan(2)
   let env = eca(1)

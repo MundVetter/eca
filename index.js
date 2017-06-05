@@ -44,22 +44,12 @@ class Eca {
     for(let i = 0; i < lattice.length; i++) {
       const a = i - this.neighbors / 2
       const b = i + 1 + this.neighbors / 2
-      const neighborhood = this._getNeighborhood(lattice, a, b)
+      const neighborhood = lattice.substring(a, b)
       const index = this.results.length - (parseInt(neighborhood, this.states) + 1)
       newLattice += this.results.charAt(index)
     }
     this.lattices.push(newLattice)
     return newLattice
-  }
-  _getNeighborhood(lattice, a, b) {
-    // on the edge get the cell of the other side
-    if(a < 0) {
-      return lattice.slice(a) + lattice.slice(0, b)
-    } else if(b > lattice.length) {
-      return lattice.slice(a) + lattice.slice(0, b - lattice.length)
-    } else {
-      return lattice.slice(a, b)
-    }
   }
 }
 function eca(number, options = {}) {
