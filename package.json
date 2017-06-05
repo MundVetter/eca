@@ -1,6 +1,6 @@
 {
   "name": "eca",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "A generator for Ellementary Cellular Automata",
   "main": "index.js",
   "dependencies": {
