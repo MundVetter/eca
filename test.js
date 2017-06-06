@@ -2,8 +2,8 @@
 const eca = require('./')
 const test = require('tape')
 
-test('eca', (assert) => {
-  assert.plan(4)
+test('genLattice', (assert) => {
+  assert.plan(3)
   let thirty = eca(30)
   thirty.genLattice()
   thirty.genLattice()
@@ -16,12 +16,16 @@ test('eca', (assert) => {
   even.genLattice()
   assert.equal(even.lattices[2].length, 4)
   assert.equal(even.lattices[0], '0100')
-
-  assert.throws(() => eca(30, {width: 3, seed: '1111'}))
 })
-test('rule', (assert) => {
+test('_initialLattice', (assert) => {
   assert.plan(2)
+  assert.throws(() => eca(30, {width: 3, seed: '1111'}))
+  assert.throws(() => eca(1, {seed: [1]}))
+})
+test('_rule', (assert) => {
+  assert.plan(3)
   let env = eca(1)
   assert.equal(env.results, '00000001')
   assert.throws(() => env._rule(-1))
+  assert.throws(() => env._rule('1'))
 })
