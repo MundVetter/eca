@@ -22,10 +22,10 @@ test('_initialLattice', (assert) => {
   assert.throws(() => eca(30, {width: 3, seed: '1111'}))
   assert.throws(() => eca(1, {seed: [1]}))
 })
-test('_rule', (assert) => {
+test('_makeLookup', (assert) => {
   assert.plan(3)
   let env = eca(1)
-  assert.equal(env.results, '00000001')
+  assert.equal(env.lookup, '00000001')
   assert.throws(() => env._rule(-1))
   assert.throws(() => env._rule('1'))
 })
