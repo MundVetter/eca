@@ -1,6 +1,6 @@
 {
   "name": "eca",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "A generator for Ellementary Cellular Automata",
   "main": "index.js",
   "devDependencies": {
@@ -18,7 +18,7 @@
   "bugs": {
     "url": "https://github.com/MundVetter/eca/issues"
   },
-  "homepage": "https://github.com/MundVetter/toBase#readme",
+  "homepage": "https://github.com/MundVetter/eca#readme",
   "keywords": [
     "ellementary",
     "cellular",
