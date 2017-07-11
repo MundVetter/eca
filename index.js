@@ -4,9 +4,9 @@
 */
 'use strict'
 
-const assert = require('assert');
+const assert = require('assert')
 class Eca {
-  constructor(rule, options = {}) {
+  constructor (rule, options = {}) {
     this.neighbors = options.neighbors || 2
     this.states = options.states || 2
     assert.equal(typeof this.neighbors && typeof this.states, 'number')
@@ -15,33 +15,34 @@ class Eca {
     this.lookup = this._makeLookup(rule)
     this._initialLattice(options.seed, options.width)
   }
-  _makeLookup(rule = 30) {
+  _makeLookup (rule = 30) {
+    if (typeof rule === 'string') return rule
     assert.equal(typeof rule, 'number')
     const patterns = Math.pow(this.states, this.neighbors + 1)
     const max = Math.pow(this.states, patterns) - 1
     assert.ok(rule >= 0 && rule <= max)
     return rule.toString(this.states).padStart(patterns, 0)
   }
-  //Generates the initial lattice from a seed
-  _initialLattice(seed = '1', width = 11) {
+  // Generates the initial lattice from a seed
+  _initialLattice (seed = '1', width = 11) {
     assert.ok(seed.length <= width)
     assert.equal(typeof seed, 'string')
 
     this.lattices.push(seed)
     let margin = (width - seed.length) / 2
-    if(margin % 1 != 0) {
+    if (margin % 1 !== 0) {
       this.lattices[0] += '0'
       margin = Math.floor(margin)
     }
-    for(let i = 0; i < margin; i++) {
+    for (let i = 0; i < margin; i++) {
       this.lattices[0] += '0'
       this.lattices[0] = '0' + this.lattices[0]
     }
   }
-  genLattice() {
+  genLattice () {
     let newLattice = ''
     const lattice = this.lattices[this.lattices.length - 1]
-    for(let i = 0; i < lattice.length; i++) {
+    for (let i = 0; i < lattice.length; i++) {
       const a = i - this.neighbors / 2
       const b = i + 1 + this.neighbors / 2
       const neighborhood = lattice.substring(a, b)
@@ -52,7 +53,7 @@ class Eca {
     return newLattice
   }
 }
-function eca(rule, options = {}) {
+function eca (rule, options = {}) {
   return new Eca(rule, options)
 }
 module.exports = eca

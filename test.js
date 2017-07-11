@@ -3,19 +3,24 @@ const eca = require('./')
 const test = require('tape')
 
 test('genLattice', (assert) => {
-  assert.plan(3)
+  assert.plan(4)
   let thirty = eca(30)
   thirty.genLattice()
   thirty.genLattice()
   thirty.genLattice()
-  assert.deepEqual(thirty.lattices, ['00000100000', '00001110000',
-  '00011001000', '00110111100'])
+  assert.deepEqual(thirty.lattices, ['00000100000', '00001110000', '00011001000', '00110111100'])
 
   let even = eca(30, {width: 4})
   even.genLattice()
   even.genLattice()
   assert.equal(even.lattices[2].length, 4)
   assert.equal(even.lattices[0], '0100')
+
+  const custom = eca('00111001', {seed: '1001', width: 4})
+  custom.genLattice()
+  custom.genLattice()
+  custom.genLattice()
+  assert.deepEqual(custom.lattices, [ '1001', '0100', '0011', '1011' ])
 })
 test('_initialLattice', (assert) => {
   assert.plan(2)
