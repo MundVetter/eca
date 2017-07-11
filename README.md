@@ -6,11 +6,11 @@ A generator written in Javascript for Elementary Cellular Automata. We call it e
 The `rule` can be a base 10 integer or an binary string. The second parameter is an object.
 That object can contain a `seed`. The `seed` is a binary string.
 The `seed` defaults to `'1'`. You can also determine the `width` of the eca.
-The `width` property defaults to`11`.
+The `width` property defaults to `11`.
 The `.genLattice()` method generates a new lattice and returns that lattice. The lattices
 are saved in the `.lattices` property.
 
-examples:
+Examples:
 ``` javascript
 const eca = require('eca')
 
