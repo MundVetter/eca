@@ -4,7 +4,7 @@ const test = require('tape')
 
 test('genLattice', (assert) => {
   assert.plan(4)
-  let thirty = eca(30)
+  const thirty = eca(30)
   thirty.genLattice()
   thirty.genLattice()
   thirty.genLattice()
@@ -22,11 +22,18 @@ test('genLattice', (assert) => {
   custom.genLattice()
   assert.deepEqual(custom.lattices, [ '1001', '0100', '0011', '1011' ])
 })
+test('generateLattices', (assert) => {
+  assert.plan(1)
+  const thirty = eca(30)
+  assert.deepEqual(thirty.generateLattices(3), ['00001110000', '00011001000', '00110111100'])
+})
+
 test('_initialLattice', (assert) => {
   assert.plan(2)
   assert.throws(() => eca(30, {width: 3, seed: '1111'}))
   assert.throws(() => eca(1, {seed: [1]}))
 })
+
 test('_makeLookup', (assert) => {
   assert.plan(3)
   let env = eca(1)
