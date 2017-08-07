@@ -10,7 +10,7 @@ test('genLattice', (assert) => {
   thirty.genLattice()
   assert.deepEqual(thirty.lattices, ['00000100000', '00001110000', '00011001000', '00110111100'])
 
-  let even = eca(30, {width: 4})
+  const even = eca(30, {width: 4})
   even.genLattice()
   even.genLattice()
   assert.equal(even.lattices[2].length, 4)
@@ -36,7 +36,7 @@ test('_initialLattice', (assert) => {
 
 test('_makeLookup', (assert) => {
   assert.plan(3)
-  let env = eca(1)
+  const env = eca(1)
   assert.equal(env.lookup, '00000001')
   assert.throws(() => env._rule(-1))
   assert.throws(() => env._rule('1'))
