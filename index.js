@@ -27,7 +27,7 @@ class Eca {
   }
   // Generates the initial lattice from a seed
   _initialLattice (seed = '1', width = 11) {
-    assert.ok(seed.length <= width, 'eca: Expected the seed to be smaller or equal the width of the eca.')
+    assert.ok(seed.length <= width, 'eca: Expected the seed to be smaller than or equal to the width of the eca.')
     assert.equal(typeof seed, 'string', 'eca: Expected the seed to be a string.')
 
     this.lattices.push(seed)
