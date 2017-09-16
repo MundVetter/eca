@@ -22,6 +22,7 @@ test('genLattice', (assert) => {
   custom.genLattice()
   assert.deepEqual(custom.lattices, [ '1001', '0100', '0011', '1011' ])
 })
+
 test('generateLattices', (assert) => {
   assert.plan(1)
   const thirty = eca(30)
