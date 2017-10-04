@@ -15,6 +15,7 @@ class Eca {
     this.lookup = this._makeLookup(rule)
     this._initialLattice(options.seed, options.width)
   }
+
   _makeLookup (rule = 30) {
     if (typeof rule === 'string') return rule
     assert.equal(typeof rule, 'number', 'eca: Expected the rule to be a number or a binary string.')
@@ -25,23 +26,26 @@ class Eca {
 
     return rule.toString(this.states).padStart(patterns, 0)
   }
+
   // Generates the initial lattice from a seed
   _initialLattice (seed = '1', width = 11) {
     assert.ok(seed.length <= width, 'eca: Expected the seed to be smaller than or equal to the width of the eca.')
     assert.equal(typeof seed, 'string', 'eca: Expected the seed to be a string.')
 
     this.lattices.push(seed)
-
     let margin = (width - seed.length) / 2
+    
     if (margin % 1 !== 0) {
       this.lattices[0] += '0'
       margin = Math.floor(margin)
     }
+  
     for (let i = 0; i < margin; i++) {
       this.lattices[0] += '0'
       this.lattices[0] = '0' + this.lattices[0]
     }
   }
+
   genLattice () {
     let newLattice = ''
     const lattice = this.lattices[this.lattices.length - 1]
@@ -59,6 +63,7 @@ class Eca {
     this.lattices.push(newLattice)
     return newLattice
   }
+
   generateLattices (n) {
     const lattices = []
     for (var i = 0; i < n; i++) {
