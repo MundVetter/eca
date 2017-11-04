@@ -29,7 +29,7 @@ custom.lattices
 // => [ '1001', '0100', '0011', '1011' ]
 ```
 
-## Instalation
+## Installation
 ```bash
 npm i eca
 ```
