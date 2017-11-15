@@ -51,9 +51,9 @@ class Eca {
     const lattice = this.lattices[this.lattices.length - 1]
 
     for (let i = 0; i < lattice.length; i++) {
-      const neigbor = this.neighbors / 2
-      const a = i - neigbor
-      const b = i + 1 + neigbor
+      const neighbor = this.neighbors / 2
+      const a = i - neighbor
+      const b = i + 1 + neighbor
       const neighborhood = lattice.substring(a, b)
 
       const index = this.lookup.length - (parseInt(neighborhood, this.states) + 1)
