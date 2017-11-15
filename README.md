@@ -1,7 +1,7 @@
 # Elementary Cellular Automata
 A generator written in Javascript for Elementary Cellular Automata. We call it eca. Made by Mund & Mart for their *profielwerkstuk*.
 
-## How to use
+## Usage
 `eca(rule, options)` has one required parameter(the rule),the second parameter is optional.
 The `rule` can be a base 10 integer or an binary string. The second parameter is an object.
 That object can contain a `seed`. The `seed` is a binary string.
